@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Procedimentos: Falta de Serviço | Suporte Brisanet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f4c81 0%, #1a6fba 100%);
+        }
+        
+        .tab-button.active {
+            border-color: #3b82f6;
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .section-title {
+            font-weight: 600; /* semibold */
+            color: #4b5563; /* text-gray-600 */
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b; /* border-amber-500 */
+            padding: 1rem;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Procedimentos para Falta de acesso</h1>
+                <p class="text-xl opacity-90">Esse site visa ajudar os colaboradores da Brisanet sobre informações técnicas de como resolver problemas de falta de acesso  de forma simples e explicativa.</p>
+            </div>
+        </div>
+        <svg class="w-full h-16 text-gray-100 block" viewBox="0 0 1440 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48h1440V0c-211.98 21.297-433.96 37.297-720 37.297S211.98 21.297 0 0v48z"></path>
+        </svg>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-8 border-b border-gray-200">
+                <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                    <button class="tab-button active text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base" data-tab="sem-sinal">
+                        SEM SINAL (LEDs)
+                    </button>
+                    <button class="tab-button text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base ml-4" data-tab="problemas-wifi">
+                        SEM SERVIÇO (WI-FI)
+                    </button>
+                    <button class="tab-button text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base ml-4" data-tab="problemas-cabo">
+                        SEM SERVIÇO (CABO)
+                    </button>
+                    <button class="tab-button text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base ml-4" data-tab="falhas-acesso">
+                        SEM ACESSO (PPPoE/DHCP)
+                    </button>
+                </nav>
+            </div>
+
+            <div id="tab-content-container">
+
+                <div id="sem-sinal" class="tab-content active space-y-4">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Pon Piscando<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando a LED PON da ONU estiver piscando.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Consultar se há problemas na rota.</li>
+                                <li>Questionar ao cliente quais os LEDs estão acesos no equipamento.</li>
+                                <li>Questionar se notou algum cabo de fibra rompido, chuva forte, infiltração, queda de energia ou algo do tipo.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Orientar reinício manual da ONU.</li>
+                                    <li>Tentar reconfigurar pelo sistema.</li>
+                                    <li>Caso LED PON continue piscando: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Pon Apagada<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando a LED PON da ONU estiver apagada.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Consultar se há problemas na rota.</li>
+                                <li>Questionar ao cliente quais os LEDs estão acesos no equipamento.</li>
+                                <li>Questionar se notou algum cabo de fibra rompido, chuva forte, infiltração, queda de energia ou algo do tipo.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Orientar reinício manual da ONU.</li>
+                                    <li>Tentar reconfigurar pelo sistema.</li>
+                                    <li>Caso LED PON continue apagada: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Cabo da Fibra Rompido (LOS)<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o cliente liga informando estar com seu cabo rompido, em verificação em sistema a LED LOS estiver ativa e a rota estiver normal.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Consultar se há problemas na rota.</li>
+                                <li>Questionar ao cliente quais os LEDs estão acesos no equipamento (confirmar LOS vermelha).</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li><strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Rota Inoperante<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando tiver problemas de rota na região do cliente.</p>
+                             <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar Sinal da ONU (deve estar offline).</li>
+                                <li>Consultar se há problemas na rota no <strong>Pastor</strong></li>
+                                <li>Consultar se chamado foi aberto no <strong>Saski</strong></li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                     <li>caso o chamado no saski tenha sido aberto, repasse as informações ao cliente sobre sua falta de acesso e prazo de manuntenção de 24h.</li>
+                                     <li>caso o chamado no saski não tenha sido aberto, abra o chamado <strong>IMOC</strong></li> para envio da equipe ao local, repasse o prazo de até 24h para normalização do acesso .</li>
+                                     <li>Caso continue sem ligar: <strong>IMOC</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Olt em manuntenção<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando tiver manuntenção na olt da região do cliente.</p>
+                             <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar Sinal da ONU (deve estar tudo ok).</li>
+                                <li>Consultar gerencia do Roteador (deve estar tudo ok)</li>
+                                <li>Consultar a aba <strong>RESULTADOS DOS TESTES</strong> no yoda.</li>
+                                <li>Em <strong>RESULTADOS DOS TESTES</strong> aparece a mensagem <strong>OLT EM MANUNTENÇÂO</strong>  </li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                     <li>Com a confirmação da manuntenção na Olt, verifique com seu lider as informações nécessarias e repasse ao cliente o prazo de termino da manunteção </li>
+                                     <li>Nesse caso especifico não Abrir chamado para <strong>técnico externo</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU/Fonte queimado ou danificado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando a ONU ou fonte estiverem queimados.</p>
+                             <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar Sinal da ONU (provavelmente offline).</li>
+                                <li>Consultar se há problemas na rota.</li>
+                                <li>Questionar se acende algum LED na ONU com o equipamento ligado na tomada.</li>
+                                <li>Questionar se notou algum cabo de fibra rompido, chuva forte, infiltração, queda de energia ou algo do tipo.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                     <li>Solicitar um teste em outra tomada.</li>
+                                     <li>Conferir botão ON/OFF da ONU.</li>
+                                     <li>Caso continue sem ligar: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Problema de energia local<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando tiver algum problema elétrico na residência/empresa ou região/cidade.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar Sinal da ONU (provavelmente offline).</li>
+                                <li>Consultar se há problemas na rota.</li>
+                                <li>Questionar se acende algum LED na ONU.</li>
+                                <li>Questionar se houve manutenção da companhia elétrica.</li>
+                                <li>Questionar se há energia no local.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Orientar ao cliente a entrar em contato quando a energia for restabelecida.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+
+                <div id="problemas-wifi" class="tab-content space-y-4">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Senha incorreta<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando o cliente está sem acesso por falha de autenticação (Senha incorreta).</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Questionar qual o nome da rede que o cliente está tentando conectar.</li>
+                                <li>Questionar qual o erro aparece quando o cliente tenta se conectar.</li>
+                                <li>Orientar cliente a verificar se está digitando corretamente (maiúsculas/minúsculas).</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Gerar uma nova senha para o cliente via sistema.</li>
+                                    <li>Caso mesmo com a nova senha o cliente não consiga se conectar: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Wi-Fi com nome padrão (TP-LINK)<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando a rede Wi-Fi fica visível para o cliente com o nome padrão do fabricante.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Verificar se houve bloqueio/inadimplência do serviço recentemente.</li>
+                                <li>verificar se o cliente desligou o equipamento recentemente.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Reconfigurar equipamento(se cliente passou por bloqueio/inadimplência).</li>
+                                    <li>Alterar algum dado no Wi-Fi para forçar a atualização (Canal, largura da rede).</li>
+                                    <li>Caso mesmo após a reconfiguração o cliente não consiga se conectar: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Sem acesso com sinal normal e gerência<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando o cliente fica sem acesso rede Wi-Fi, mesmo o sistema mostrando verificado que estaria com sinal normal e gerência.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Questionar ao cliente quais os LEDs estão acesos no equipamento.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>faça uma atualização no equipamento alterando (Canal, largura da rede e Modo do Wi-Fi)</li>
+                                    <li>Reconfigurar equipamento.</li>
+                                    <li>Caso mesmo após a reconfiguração o cliente não consiga se conectar: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Wi-Fi da ONU desabilitado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando a rede não estiver aparecendo para o cliente e no sistema constar modo "router" ativado.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Questionar se a rede está aparecendo para o cliente em algum dispositivo.</li>
+                                <li>verificar se o cliente desligou o equipamento recentemente.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Alterar modo da ONU de router para bridge no sistema yoda.</li>
+                                    <li>reconfigure o equipamento pelo sistema e depois atualize a página.</li>
+                                    <li>Verificar com o cliente se a rede voltou a aparecer.</li>
+                                    <li>Se persistir: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+
+                 <div id="problemas-cabo" class="tab-content space-y-4">
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Conectou o cabo na porta errada<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando o cabo de rede não estiver conectado na LAN 1 da ONU.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar "Clientes Conectados" no sistema yoda para ver qual porta está em uso.</li>
+                                <li>Questionar o cliente em qual porta da ONU ele está conectado e se o mesmo cabo esta na porta azul do Roteador.</li>
+                                <li>Questionar se o cliente tentou trocar o cabo de porta.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Orientar que o cliente conecte na <strong>LAN1</strong> da ONU e na porta azul do Roteador.</li>
+                                    <li>Se não funcionar na LAN1, solicitar que conecte na LAN2 para testar a porta e o cabo.</li>
+                                    <li>Se funcionar na LAN2 mas não na LAN1: <strong>Abrir chamado técnico externo</strong> por possível defeito na porta.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Cabo/Conector de rede com problema<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando identificado algum problema físico no cabo ou conector.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                 <li>Questionar se o cabo/conector está visivelmente danificado.</li>
+                                 <li>Consultar no sistema o status da porta LAN1.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                     <li><strong>Abrir chamado técnico externo</strong> (sem custo se for o cabo que conecta ONU e roteador fornecido pela Brisanet).</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+
+                 <div id="falhas-acesso" class="tab-content space-y-4">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU PPPoE sem conectar (IP Fixo)<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando a ONU em modo PPPoE não está conectando (Recebendo IP).</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                 <li>Consultar sinal da ONU.</li>
+                                 <li>Consultar se há comandos pendentes na TL1.</li>
+                                 <li>Consultar se o cliente tem IP FIXO e se está duplicado.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                     <li>Tentar reconfigurar ONU.</li>
+                                     <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU com DHCP desativado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando a ONU em modo DHCP está desativada.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                             <ul class="list-disc pl-5 text-gray-600">
+                                 <li>Consultar sinal da ONU.</li>
+                                 <li>Consultar status do DHCP no sistema.</li>
+                                 <li>Consultar se há comandos pendentes na TL1.</li>
+                            </ul>
+                             <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Tentar reconfigurar ONU no antigo revan, logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
+                                    <li>Logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
+                                    <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-400">©2025 Alison Braga da Silva</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            // Tab functionality
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update button styles
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'text-blue-600', 'border-blue-600', 'bg-blue-50');
+                        btn.classList.add('text-gray-600', 'hover:text-blue-600');
+                    });
+                    button.classList.add('active', 'text-blue-600', 'border-blue-600', 'bg-blue-50');
+                    
+                    // Update content visibility
+                    tabContents.forEach(content => {
+                        if (content.id === button.dataset.tab) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Accordion functionality
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                const arrow = item.querySelector('.faq-arrow');
+                
+                header.addEventListener('click', () => {
+                    const isOpened = content.style.maxHeight && content.style.maxHeight !== '0px';
+                    
+                    if (isOpened) {
+                        content.style.maxHeight = '0px';
+                        arrow.classList.remove('rotate-180');
+                    } else {
+                        // Close other accordions in the same tab panel
+                        const parentTab = item.closest('.tab-content');
+                        parentTab.querySelectorAll('.accordion-item').forEach(otherItem => {
+                           otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                           otherItem.querySelector('.faq-arrow').classList.remove('rotate-180');
+                        });
+                        
+                        // Open the clicked one
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        arrow.classList.add('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
