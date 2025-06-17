@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia de Procedimentos: Falta de Serviço | Suporte Brisanet</title>
+    <title>Resoluções de Problemas</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
@@ -13,7 +13,7 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #0f4c81 0%, #1a6fba 100%);
+            background: linear-gradient(135deg, #4362ee 0%, #08bea6 100%);
         }
         
         .tab-button.active {
@@ -30,10 +30,10 @@
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
-        
+
         .section-title {
             font-weight: 600; /* semibold */
-            color: #4b5563; /* text-gray-600 */
+            color: #4b6351; /* text-gray-600 */
             margin-top: 1rem;
             margin-bottom: 0.5rem;
         }
@@ -56,8 +56,8 @@
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-4 py-16">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Procedimentos para Falta de acesso</h1>
-                <p class="text-xl opacity-90">Esse site visa ajudar os colaboradores da Brisanet sobre informações técnicas de como resolver problemas de falta de acesso  de forma simples e explicativa.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Resoluções de Problemas</h1>
+                <p class="text-xl opacity-90">Esse site visa ajudar os colaboradores da Brisanet sobre informações técnicas de como resolver problemas de forma simples e explicativa.</p>
             </div>
         </div>
         <svg class="w-full h-16 text-gray-100 block" viewBox="0 0 1440 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +80,9 @@
                     </button>
                     <button class="tab-button text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base ml-4" data-tab="falhas-acesso">
                         SEM ACESSO (PPPoE/DHCP)
+                    </button>
+                    <button class="tab-button text-gray-600 hover:text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base ml-4" data-tab="telefonia-fixa">
+                        TELEFONIA FIXA
                     </button>
                 </nav>
             </div>
@@ -383,7 +386,7 @@
                              <div class="action-box">
                                 <h4 class="font-bold text-amber-700">Ação</h4>
                                 <ol class="list-decimal pl-5 text-gray-700">
-                                    <li>Tentar reconfigurar ONU no antigo revan, logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
+                                    <li>Tentar reconfigurar ONU no antigo Yoda, logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
                                     <li>Logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
                                     <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
                                 </ol>
@@ -391,6 +394,222 @@
                         </div></div>
                     </div>
                 </div>
+                
+                <div id="telefonia-fixa" class="tab-content space-y-4">
+                    
+                    <h3 class="text-2xl font-bold text-gray-700 mt-6 mb-2">INDISPONÍVEL</h3>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Telefone desativado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando a telefonia estiver desativada.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
+                                <li>Consultar a porta FXS no sistema Yoda.</li>
+                                <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Ativar a ONU telefonia.</li>
+                                    <li>Se não funcionar, reconfigurar e ativar novamente.</li>
+                                    <li>Caso não funcione, solicitar o resete da instalação pelo setor de liberação.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Falha de autenticação<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando a telefonia estiver com falha de autenticação.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
+                                <li>Consultar a porta FXS no Sistema Yoda.</li>
+                                <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Ativar a ONU telefonia.</li>
+                                    <li>Se não funcionar, reconfigurar e ativar novamente.</li>
+                                    <li>Caso não funcione, solicitar o resete da instalação pelo setor de liberação.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Telefone mudo<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o cliente relata que o telefone está mudo.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Verificar se o telefone está conectado na porta correta.</li>
+                                <li>Verificar se a alavanca do aparelho telefônico está virada para a opção "Tone".</li>
+                                <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
+                                <li>Consultar a porta da telefonia na Sistema Yoda.</li>
+                                <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Ativar a ONU telefonia.</li>
+                                    <li>Se não funcionar, reconfigurar e ativar novamente.</li>
+                                    <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Problema no conector RJ-11/RJ-9<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o problema é o conector RJ-11 ou RJ-9.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Questionar ao cliente sobre o estado físico dos conectores.</li>
+                                <li>Solicitar que conecte e desconecte o cabo.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Abrir chamado para a troca de conectores caso o cliente não possa trocar.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Problema no cabo<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o problema é no cabo do telefone.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Questionar ao cliente sobre o estado físico do cabo.</li>
+                                <li>Solicitar que conecte e desconecte o cabo.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Abrir chamado para a troca de cabo caso o cliente não possa trocar.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Problema no telefone<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o problema é no telefone.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Questionar ao cliente sobre o estado físico do aparelho.</li>
+                                <li>Solicitar que conecte e desconecte o cabo.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Abrir chamado para troca de telefone caso o cliente não possa trocar.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+
+
+                    <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-2">INDISPONÍVEL PARCIAL</h3>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Não efetua ligações<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o cliente não consegue efetuar ligações no telefone.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Verificar se o cliente solicitou portabilidade e o processo foi concluído.</li>
+                                <li>Verificar se o telefone está conectado na porta correta.</li>
+                                <li>Verificar se a alavanca do aparelho telefônico está virada para a opção "Tone".</li>
+                                <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
+                                <li>Consultar a porta FXS no Sistema Yoda.</li>
+                                <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Ativar a ONU telefonia.</li>
+                                    <li>Se não funcionar, reconfigurar e ativar novamente.</li>
+                                    <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
+                                    <li>Caso a portabilidade ainda não tenha sido concluída, pedir para o cliente aguardar o prazo.</li>
+                                    <li>Caso o prazo tenha acabado, consultar o setor de portabilidade sobre possíveis erros.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Não recebe ligações<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o cliente não recebe ligações no telefone.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Verificar se o cliente solicitou portabilidade e o processo foi concluído.</li>
+                                <li>Verificar se o telefone está conectado na porta correta.</li>
+                                <li>Verificar se a alavanca do aparelho telefônico está virada para a opção "Tone".</li>
+                                <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
+                                <li>Consultar a porta FXS no Sistema YODA.</li>
+                                <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Ativar a ONU telefonia.</li>
+                                    <li>Se não funcionar, reconfigurar e ativar novamente.</li>
+                                    <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
+                                    <li>Caso a portabilidade ainda não tenha sido concluída, pedir para o cliente aguardar o prazo.</li>
+                                    <li>Caso o prazo tenha acabado, consultar o setor de portabilidade sobre possíveis erros.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Ligação falhando<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                            <p class="text-gray-600">Usado quando o cliente relatada que ás ligações estão falhando ou chiando.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Consultar sinal da ONU.</li>
+                                <li>Questionar ao cliente o estado físico dos cabos, conectores e aparelho de telefone.</li>
+                                <li>Verificar se o cliente está conectando o aparelho telefônico direto da ONU.</li>
+                                <li>Verificar se o cabo do telefone fica próximo de uma rede elétrica.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Desconectar e reconectar os cabos.</li>
+                                    <li>Ativar telefonia.</li>
+                                    <li>Caso não funcione, abrir chamado.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-700 mt-8 mb-2">PROBLEMA NA PORTABILIDADE</h3>
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Portabilidade incorreta<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content"><div class="p-4 border-t">
+                             <p class="text-gray-600">Usado quando foi realizado a portabilidade do número incorreto.</p>
+                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                            <ul class="list-disc pl-5 text-gray-600">
+                                <li>Verificar se no protocolo consta o número diferente do liberado no cadastro.</li>
+                                <li>Verificar se o número que o cliente possui esta diferente do que está liberado no cadastro.</li>
+                            </ul>
+                            <div class="action-box">
+                                <h4 class="font-bold text-amber-700">Ação</h4>
+                                <ol class="list-decimal pl-5 text-gray-700">
+                                    <li>Entrar em contato com o setor de portabilidade para ser corrigido o número.</li>
+                                </ol>
+                            </div>
+                        </div></div>
+                    </div>
+                     </div>
 
             </div>
         </div>
@@ -415,10 +634,15 @@
                 button.addEventListener('click', () => {
                     // Update button styles
                     tabButtons.forEach(btn => {
-                        btn.classList.remove('active', 'text-blue-600', 'border-blue-600', 'bg-blue-50');
-                        btn.classList.add('text-gray-600', 'hover:text-blue-600');
+                        btn.classList.remove('active');
+                        btn.style.borderColor = 'transparent';
+                        btn.style.color = '#4b5563'; // text-gray-600
+                        btn.style.backgroundColor = 'transparent';
                     });
-                    button.classList.add('active', 'text-blue-600', 'border-blue-600', 'bg-blue-50');
+                    button.classList.add('active');
+                    button.style.borderColor = '#3b82f6'; // border-blue-500
+                    button.style.color = '#2563eb'; // text-blue-600
+                    button.style.backgroundColor = '#eff6ff'; // bg-blue-50
                     
                     // Update content visibility
                     tabContents.forEach(content => {
@@ -457,6 +681,11 @@
                     }
                 });
             });
+
+            // Activate the first tab by default
+            if(tabButtons.length > 0) {
+                tabButtons[0].click();
+            }
         });
     </script>
 </body>
