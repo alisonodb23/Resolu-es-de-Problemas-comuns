@@ -49,6 +49,27 @@
         .rotate-180 {
             transform: rotate(180deg);
         }
+
+        /* --- CSS Adicional para o Efeito de Lupa --- */
+        .gallery-image {
+            position: relative;
+            overflow: hidden; /* Garante que a lupa não saia dos limites da imagem */
+        }
+
+        .magnifying-glass {
+            position: absolute;
+            border: 3px solid #08bea6;
+            border-radius: 50%;
+            cursor: none;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px; /* Tamanho da lupa */
+            display: none; /* Escondida por padrão */
+            background-repeat: no-repeat;
+            pointer-events: none; /* Impede que a lupa interfira nos eventos do mouse */
+            z-index: 10;
+        }
+        /* --- Fim do CSS Adicional --- */
+
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -314,89 +335,185 @@
                 </div>
 
                  <div id="problemas-cabo" class="tab-content space-y-4">
-                     <div class="accordion-item bg-white rounded-lg shadow-sm">
-                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Conectou o cabo na porta errada<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="accordion-content"><div class="p-4 border-t">
-                             <p class="text-gray-600">Usado quando o cabo de rede não estiver conectado na LAN 1 da ONU.</p>
-                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
-                             <ul class="list-disc pl-5 text-gray-600">
-                                <li>Consultar "Clientes Conectados" no sistema yoda para ver qual porta está em uso.</li>
-                                <li>Questionar o cliente em qual porta da ONU ele está conectado e se o mesmo cabo esta na porta azul do Roteador.</li>
-                                <li>Questionar se o cliente tentou trocar o cabo de porta.</li>
-                            </ul>
-                             <div class="action-box">
-                                <h4 class="font-bold text-amber-700">Ação</h4>
-                                <ol class="list-decimal pl-5 text-gray-700">
-                                    <li>Orientar que o cliente conecte na <strong>LAN1</strong> da ONU e na porta azul do Roteador.</li>
-                                    <li>Se não funcionar na LAN1, solicitar que conecte na LAN2 para testar a porta e o cabo.</li>
-                                    <li>Se funcionar na LAN2 mas não na LAN1: <strong>Abrir chamado técnico externo</strong> por possível defeito na porta.</li>
-                                </ol>
-                            </div>
-                        </div></div>
+                       <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Conectou o cabo na porta errada<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            <div class="accordion-content"><div class="p-4 border-t">
+                                 <p class="text-gray-600">Usado quando o cabo de rede não estiver conectado na LAN 1 da ONU.</p>
+                                <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                                 <ul class="list-disc pl-5 text-gray-600">
+                                    <li>Consultar "Clientes Conectados" no sistema yoda para ver qual porta está em uso.</li>
+                                    <li>Questionar o cliente em qual porta da ONU ele está conectado e se o mesmo cabo esta na porta azul do Roteador.</li>
+                                    <li>Questionar se o cliente tentou trocar o cabo de porta.</li>
+                                </ul>
+                                 <div class="action-box">
+                                    <h4 class="font-bold text-amber-700">Ação</h4>
+                                    <ol class="list-decimal pl-5 text-gray-700">
+                                        <li>Orientar que o cliente conecte na <strong>LAN1</strong> da ONU e na porta azul do Roteador.</li>
+                                        <li>Se não funcionar na LAN1, solicitar que conecte na LAN2 para testar a porta e o cabo.</li>
+                                        <li>Se funcionar na LAN2 mas não na LAN1: <strong>Abrir chamado técnico externo</strong> por possível defeito na porta.</li>
+                                    </ol>
+                                </div>
+                            </div></div>
+                        </div>
+                       <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Cabo/Conector de rede com problema<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            <div class="accordion-content"><div class="p-4 border-t">
+                                 <p class="text-gray-600">Usado quando identificado algum problema físico no cabo ou conector.</p>
+                                <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                                 <ul class="list-disc pl-5 text-gray-600">
+                                      <li>Questionar se o cabo/conector está visivelmente danificado.</li>
+                                      <li>Consultar no sistema o status da porta LAN1.</li>
+                                </ul>
+                                 <div class="action-box">
+                                    <h4 class="font-bold text-amber-700">Ação</h4>
+                                    <ol class="list-decimal pl-5 text-gray-700">
+                                         <li><strong>Abrir chamado técnico externo</strong> (sem custo se for o cabo que conecta ONU e roteador fornecido pela Brisanet).</li>
+                                    </ol>
+                                </div>
+                            </div></div>
+                        </div>
                     </div>
-                     <div class="accordion-item bg-white rounded-lg shadow-sm">
-                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Cabo/Conector de rede com problema<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="accordion-content"><div class="p-4 border-t">
-                             <p class="text-gray-600">Usado quando identificado algum problema físico no cabo ou conector.</p>
-                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
-                             <ul class="list-disc pl-5 text-gray-600">
-                                 <li>Questionar se o cabo/conector está visivelmente danificado.</li>
-                                 <li>Consultar no sistema o status da porta LAN1.</li>
-                            </ul>
-                             <div class="action-box">
-                                <h4 class="font-bold text-amber-700">Ação</h4>
-                                <ol class="list-decimal pl-5 text-gray-700">
-                                     <li><strong>Abrir chamado técnico externo</strong> (sem custo se for o cabo que conecta ONU e roteador fornecido pela Brisanet).</li>
-                                </ol>
-                            </div>
-                        </div></div>
-                    </div>
-                </div>
 
                  <div id="falhas-acesso" class="tab-content space-y-4">
-                    <div class="accordion-item bg-white rounded-lg shadow-sm">
-                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU PPPoE sem conectar (IP Fixo)<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="accordion-content"><div class="p-4 border-t">
-                             <p class="text-gray-600">Usado quando a ONU em modo PPPoE não está conectando (Recebendo IP).</p>
-                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
-                             <ul class="list-disc pl-5 text-gray-600">
-                                 <li>Consultar sinal da ONU.</li>
-                                 <li>Consultar se há comandos pendentes na TL1.</li>
-                                 <li>Consultar se o cliente tem IP FIXO e se está duplicado.</li>
-                            </ul>
-                             <div class="action-box">
-                                <h4 class="font-bold text-amber-700">Ação</h4>
-                                <ol class="list-decimal pl-5 text-gray-700">
-                                     <li>Tentar reconfigurar ONU.</li>
-                                     <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
-                                </ol>
-                            </div>
-                        </div></div>
-                    </div>
                      <div class="accordion-item bg-white rounded-lg shadow-sm">
-                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU com DHCP desativado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="accordion-content"><div class="p-4 border-t">
-                             <p class="text-gray-600">Usado quando a ONU em modo DHCP está desativada.</p>
-                            <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
-                             <ul class="list-disc pl-5 text-gray-600">
-                                 <li>Consultar sinal da ONU.</li>
-                                 <li>Consultar status do DHCP no sistema.</li>
-                                 <li>Consultar se há comandos pendentes na TL1.</li>
-                            </ul>
-                             <div class="action-box">
-                                <h4 class="font-bold text-amber-700">Ação</h4>
-                                <ol class="list-decimal pl-5 text-gray-700">
-                                    <li>Tentar reconfigurar ONU no antigo Yoda, logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
-                                    <li>Logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
-                                    <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
-                                </ol>
-                            </div>
-                        </div></div>
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU PPPoE sem conectar (IP Fixo)<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            <div class="accordion-content"><div class="p-4 border-t">
+                                 <p class="text-gray-600">Usado quando a ONU em modo PPPoE não está conectando (Recebendo IP).</p>
+                                <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                                 <ul class="list-disc pl-5 text-gray-600">
+                                      <li>Consultar sinal da ONU.</li>
+                                      <li>Consultar se há comandos pendentes na TL1.</li>
+                                      <li>Consultar se o cliente tem IP FIXO e se está duplicado.</li>
+                                </ul>
+                                 <div class="action-box">
+                                    <h4 class="font-bold text-amber-700">Ação</h4>
+                                    <ol class="list-decimal pl-5 text-gray-700">
+                                          <li>Tentar reconfigurar ONU.</li>
+                                          <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
+                                    </ol>
+                                </div>
+                            </div></div>
+                        </div>
+                       <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">ONU com DHCP desativado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            <div class="accordion-content"><div class="p-4 border-t">
+                                 <p class="text-gray-600">Usado quando a ONU em modo DHCP está desativada.</p>
+                                <h4 class="section-title">Sondagem e Verificação no Sistema</h4>
+                                 <ul class="list-disc pl-5 text-gray-600">
+                                      <li>Consultar sinal da ONU.</li>
+                                      <li>Consultar status do DHCP no sistema.</li>
+                                      <li>Consultar se há comandos pendentes na TL1.</li>
+                                </ul>
+                                 <div class="action-box">
+                                    <h4 class="font-bold text-amber-700">Ação</h4>
+                                    <ol class="list-decimal pl-5 text-gray-700">
+                                        <li>Tentar reconfigurar ONU no antigo Yoda, logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
+                                        <li>Logo após atualize a página do yoda verifique se o Dhcp esta ativado no yoda.</li>
+                                        <li>Se o problema persistir: <strong>Abrir chamado técnico externo.</strong></li>
+                                    </ol>
+                                </div>
+                            </div></div>
+                        </div>
                     </div>
-                </div>
                 
                 <div id="telefonia-fixa" class="tab-content space-y-4">
                     
+                    <h3 class="text-2xl font-bold text-gray-700 mt-6 mb-4">Equipamentos</h3>
+
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Intelbras<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content">
+                            <div class="p-4 border-t grid md:grid-cols-2 gap-6 items-start">
+                                <div class="gallery-container relative" id="intelbras-gallery">
+                                    <div class="gallery-image">
+                                        <img src="INTELBRAS 1.png" alt="Intelbras - Lado de Cima" class="rounded-lg shadow-md w-full">
+                                    </div>
+                                    <div class="gallery-image" style="display: none;">
+                                        <img src="INTELBRAS 2.png" alt="Intelbras - Lado de Baixo" class="rounded-lg shadow-md w-full">
+                                    </div>
+                                    <div class="gallery-image" style="display: none;">
+                                        <img src="INTELBRAS 3.png" alt="Intelbras - Lado de Baixo" class="rounded-lg shadow-md w-full">
+                                    </div>
+                                    <button class="gallery-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100 focus:outline-none">&lt;</button>
+                                    <button class="gallery-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100 focus:outline-none">&gt;</button>
+                                </div>
+                                <div>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado de cima</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Redial:</strong> Tecla utilizada para re-discar o último número discado.</li>
+                                                <li><strong>Flash:</strong> Utilizado para alternar entre duas chamadas na mesma linha.</li>
+                                                <li><strong>Mute:</strong> Mutar o microfone.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado de baixo</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Volume da campainha:</strong> Altera entre os níveis alto e baixo.</li>
+                                                <li><strong>Tipo de toque:</strong> Alterna o tipo da melodia da campainha.</li>
+                                                <li><strong>Porta LINE (RJ11):</strong> Conector para a linha telefônica.</li>
+                                                <li><strong>Porta para monofone (RJ9):</strong> Conector para o fone.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Elgin<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                        <div class="accordion-content">
+                            <div class="p-4 border-t grid md:grid-cols-2 gap-6 items-start">
+                                <div class="gallery-container relative" id="elgin-gallery">
+                                    <div class="gallery-image"><img src="ELGIN 1.png" alt="Elgin - Lado de Cima" class="rounded-lg shadow-md w-full"></div>
+                                    <div class="gallery-image" style="display: none;"><img src="ELGIN 2.png" alt="Elgin - Lado Esquerdo" class="rounded-lg shadow-md w-full"></div>
+                                    <div class="gallery-image" style="display: none;"><img src="ELGIN 3.png" alt="Elgin - Lado Direito" class="rounded-lg shadow-md w-full"></div>
+                                    <div class="gallery-image" style="display: none;"><img src="ELGIN 4.png" alt="Elgin - Lado de Baixo" class="rounded-lg shadow-md w-full"></div>
+                                    <div class="gallery-image" style="display: none;"><img src="ELGIN 5.png" alt="Elgin - Chave de bloqueio" class="rounded-lg shadow-md w-full"></div>
+                                    <div class="gallery-image" style="display: none;"><img src="ELGIN 6.png" alt="Elgin - Chave de bloqueio" class="rounded-lg shadow-md w-full"></div>
+                                    <button class="gallery-prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100 focus:outline-none">&lt;</button>
+                                    <button class="gallery-next absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-50 hover:opacity-100 focus:outline-none">&gt;</button>
+                                </div>
+                                <div>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado de cima</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Mute:</strong> Mutar o microfone.</li>
+                                                <li><strong>Pause:</strong> Insere uma pausa na discagem.</li>
+                                                <li><strong>Flash:</strong> Utilizado para alternar chamadas.</li>
+                                                <li><strong>Redial:</strong> Re-disca o último número.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado esquerdo</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Porta para monofone (RJ9):</strong> Conector para o fone.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado direito</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Chave de seleção P/T:</strong> Altera o modo de discagem entre P(Pulse) ou T(Tune).</li>
+                                                <li><strong>Chave de volume:</strong> Altera o volume da campainha HI(toca alto), LO(toca baixo), OFF(não toca, só acende o LED).</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-gray-800">Lado de baixo</h5>
+                                            <ul class="list-decimal pl-5 text-gray-700 mt-1">
+                                                <li><strong>Trava do teclado:</strong> Bloqueia a discagem de números (requer chave).</li>
+                                                <li><strong>Porta LINE (RJ11):</strong> Conector para a linha telefônica.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <h3 class="text-2xl font-bold text-gray-700 mt-6 mb-2">INDISPONÍVEL</h3>
                     <div class="accordion-item bg-white rounded-lg shadow-sm">
                         <button class="accordion-header w-full flex justify-between items-center text-left p-4 font-semibold text-gray-800">Telefone desativado<svg class="faq-arrow h-5 w-5 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
@@ -415,6 +532,7 @@
                                     <li>Ativar a ONU telefonia.</li>
                                     <li>Se não funcionar, reconfigurar e ativar novamente.</li>
                                     <li>Caso não funcione, solicitar o resete da instalação pelo setor de liberação.</li>
+                                    <li>Caso não funcione, abrir chamado no <strong>Saski</strong>.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -436,6 +554,7 @@
                                     <li>Ativar a ONU telefonia.</li>
                                     <li>Se não funcionar, reconfigurar e ativar novamente.</li>
                                     <li>Caso não funcione, solicitar o resete da instalação pelo setor de liberação.</li>
+                                    <li>Caso não funcione, abrir chamado no <strong>Saski</strong>.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -449,6 +568,7 @@
                                 <li>Consultar sinal da ONU.</li>
                                 <li>Verificar se o telefone está conectado na porta correta.</li>
                                 <li>Verificar se a alavanca do aparelho telefônico está virada para a opção "Tone".</li>
+                                <li>Verificar se a alavanca está para opção "hi" para tocar alto.</li>
                                 <li>Consultar se o cliente passou por Bloqueio ou possui comando CRM na TL1.</li>
                                 <li>Consultar a porta da telefonia na Sistema Yoda.</li>
                                 <li>Verifica se o "Estado" da telefonia consta como "Registrado".</li>
@@ -459,6 +579,7 @@
                                     <li>Ativar a ONU telefonia.</li>
                                     <li>Se não funcionar, reconfigurar e ativar novamente.</li>
                                     <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
+                                    <li>Caso não Funcione Abrir chamado para revisão do equipamento.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -539,6 +660,7 @@
                                     <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
                                     <li>Caso a portabilidade ainda não tenha sido concluída, pedir para o cliente aguardar o prazo.</li>
                                     <li>Caso o prazo tenha acabado, consultar o setor de portabilidade sobre possíveis erros.</li>
+                                    <li>Caso não funcione, abrir chamado no <strong>Saski</strong>.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -565,6 +687,7 @@
                                     <li>Caso a alavanca esteja virada para a opção "Pulse", vire para a opção "Tone".</li>
                                     <li>Caso a portabilidade ainda não tenha sido concluída, pedir para o cliente aguardar o prazo.</li>
                                     <li>Caso o prazo tenha acabado, consultar o setor de portabilidade sobre possíveis erros.</li>
+                                    <li>Caso Não Tenha Erro de Portabilidade, Abrir Chamado no <strong>Saski</strong>.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -585,7 +708,7 @@
                                 <ol class="list-decimal pl-5 text-gray-700">
                                     <li>Desconectar e reconectar os cabos.</li>
                                     <li>Ativar telefonia.</li>
-                                    <li>Caso não funcione, abrir chamado.</li>
+                                    <li>Caso não funcione, abrir chamado no <strong>Saski</strong>.</li>
                                 </ol>
                             </div>
                         </div></div>
@@ -609,7 +732,7 @@
                             </div>
                         </div></div>
                     </div>
-                     </div>
+                </div>
 
             </div>
         </div>
@@ -632,25 +755,11 @@
             // Tab functionality
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Update button styles
-                    tabButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.style.borderColor = 'transparent';
-                        btn.style.color = '#4b5563'; // text-gray-600
-                        btn.style.backgroundColor = 'transparent';
-                    });
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    button.style.borderColor = '#3b82f6'; // border-blue-500
-                    button.style.color = '#2563eb'; // text-blue-600
-                    button.style.backgroundColor = '#eff6ff'; // bg-blue-50
                     
-                    // Update content visibility
                     tabContents.forEach(content => {
-                        if (content.id === button.dataset.tab) {
-                            content.classList.add('active');
-                        } else {
-                            content.classList.remove('active');
-                        }
+                        content.classList.toggle('active', content.id === button.dataset.tab);
                     });
                 });
             });
@@ -661,26 +770,112 @@
                 const content = item.querySelector('.accordion-content');
                 const arrow = item.querySelector('.faq-arrow');
                 
+                if (!header) return;
+
                 header.addEventListener('click', () => {
                     const isOpened = content.style.maxHeight && content.style.maxHeight !== '0px';
+                    
+                    const parentTab = item.closest('.tab-content');
+                    parentTab.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const otherContent = otherItem.querySelector('.accordion-content');
+                            const otherArrow = otherItem.querySelector('.faq-arrow');
+                            if(otherContent) otherContent.style.maxHeight = '0px';
+                            if(otherArrow) otherArrow.classList.remove('rotate-180');
+                        }
+                    });
                     
                     if (isOpened) {
                         content.style.maxHeight = '0px';
                         arrow.classList.remove('rotate-180');
                     } else {
-                        // Close other accordions in the same tab panel
-                        const parentTab = item.closest('.tab-content');
-                        parentTab.querySelectorAll('.accordion-item').forEach(otherItem => {
-                           otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
-                           otherItem.querySelector('.faq-arrow').classList.remove('rotate-180');
-                        });
-                        
-                        // Open the clicked one
                         content.style.maxHeight = content.scrollHeight + 'px';
                         arrow.classList.add('rotate-180');
                     }
                 });
             });
+
+            // Gallery functionality
+            function setupGallery(galleryId) {
+                const gallery = document.getElementById(galleryId);
+                if (!gallery) return;
+
+                const images = gallery.querySelectorAll('.gallery-image');
+                const prevButton = gallery.querySelector('.gallery-prev');
+                const nextButton = gallery.querySelector('.gallery-next');
+                let currentIndex = 0;
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        img.style.display = i === index ? 'block' : 'none';
+                    });
+                }
+
+                prevButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                    showImage(currentIndex);
+                });
+
+                nextButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                    showImage(currentIndex);
+                });
+
+                showImage(currentIndex);
+            }
+
+            setupGallery('intelbras-gallery');
+            setupGallery('elgin-gallery');
+            
+            // --- JavaScript Adicional para o Efeito de Lupa ---
+            function magnify(imgContainer) {
+                const img = imgContainer.querySelector('img');
+                let glass = imgContainer.querySelector('.magnifying-glass');
+
+                // Cria a lupa se ela não existir para esta imagem
+                if (!glass) {
+                    glass = document.createElement("div");
+                    glass.setAttribute("class", "magnifying-glass");
+                    imgContainer.appendChild(glass);
+                }
+
+                glass.style.backgroundImage = "url('" + img.src + "')";
+                glass.style.backgroundSize = (img.width * 2) + "px " + (img.height * 2) + "px"; // Fator de zoom (2x)
+                
+                const moveMagnifier = (e) => {
+                    e.preventDefault();
+                    const pos = getCursorPos(e);
+                    
+                    let x = pos.x - (glass.offsetWidth / 2);
+                    let y = pos.y - (glass.offsetHeight / 2);
+
+                    // Impede que a lupa saia da área da imagem
+                    if (x > img.width - glass.offsetWidth) {x = img.width - glass.offsetWidth;}
+                    if (x < 0) {x = 0;}
+                    if (y > img.height - glass.offsetHeight) {y = img.height - glass.offsetHeight;}
+                    if (y < 0) {y = 0;}
+
+                    glass.style.left = x + "px";
+                    glass.style.top = y + "px";
+                    glass.style.backgroundPosition = "-" + ((pos.x * 2) - glass.offsetWidth / 2) + "px -" + ((pos.y * 2) - glass.offsetHeight / 2) + "px";
+                }
+
+                const getCursorPos = (e) => {
+                    const a = img.getBoundingClientRect();
+                    let x = e.pageX - a.left - window.pageXOffset;
+                    let y = e.pageY - a.top - window.pageYOffset;
+                    return {x: x, y: y};
+                }
+
+                imgContainer.addEventListener("mousemove", moveMagnifier);
+                imgContainer.addEventListener("mouseenter", () => glass.style.display = "block");
+                imgContainer.addEventListener("mouseleave", () => glass.style.display = "none");
+            }
+
+            document.querySelectorAll('.gallery-image').forEach(magnify);
+            // --- Fim do JavaScript Adicional ---
 
             // Activate the first tab by default
             if(tabButtons.length > 0) {
